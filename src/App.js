@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ImageGrid from './comps/ImageGrid.js';
+import Modal from './comps/Modal.js';
+import Title from './comps/Title.js';
+import UploadForm from './comps/UploadForm.js';
 
 function App() {
+  const [img, setimg] = useState(null)
+  console.log(img);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title/>
+      <UploadForm/>
+      <ImageGrid setimg={setimg}/>
+      {img && <Modal img={img} setimg={setimg} />}
+      
+      
     </div>
   );
 }
